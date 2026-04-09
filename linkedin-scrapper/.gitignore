@@ -1,0 +1,41 @@
+# Environment variables and credentials
+.env
+cookies.json
+
+# Virtual Environments
+venv/
+env/
+.venv/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Python cache / bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Mac OS files
+.DS_Store
+
+# IDE and Project Files
+.vscode/
+.idea/
+.gemini/
+
+# Media and logs
+*.png
+*.jpg
+*.jpeg
+*.log
+
+# Playwright files
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Independent / Nested repositories
+dps-internship/

@@ -37,11 +37,19 @@ SEARCH_QUERIES = [
 ]
 
 PAIN_POINT_KEYWORDS = [
-    "exhausted", "burnout", "toxic", "senior", "ragging", "stipend", "duty", 
-    "hours", "shift", "crying", "mental health", "depression", "quit", 
-    "scut", "iv", "foley", "paperwork", "thesis", "spss", "neet pg", 
-    "ini cet", "residency", "internship", "suicide", "hell", "unbearable",
-    "stipend delay", "no sleep", "48 hours", "36 hours", "continuous duty"
+    "exhausted", "burnout", "toxic senior", "ragging", "stipend delay", "duty hours", 
+    "36 hour shift", "48 hour shift", "continuous duty", "no sleep", "crying in hospital", 
+    "mental health", "depression", "suicidal", "quit medicine", "scut work", 
+    "filling foley", "doing iv", "paperwork load", "thesis reproduction", "spss struggle", 
+    "neet pg stress", "ini cet rank", "residency toxicity", "internship struggle", 
+    "unbearable", "toxic hod", "junior resident", "senior resident", "non-academic jr"
+]
+
+# Words that usually indicate spam, ads, or irrelevant chatter
+NEGATIVE_KEYWORDS = [
+    "tuition", "whatsapp", "call:", "contact:", "admission", "telegram", "subscribe", 
+    "shoutout", "nice video", "great vlog", "love your content", "fan", "shout out",
+    "course", "coaching", "unacademy", "pw med", "marrow", "prepladder"
 ]
 
 # ─── Helper Functions ────────────────────────────────────────────────────────
@@ -61,8 +69,18 @@ def get_video_ids_from_search(query):
         return []
 
 def is_pain_point(text):
-    """Check if the text contains medical community pain points."""
+    """Check if the text is a genuine medical pain point and not spam."""
     text_lower = text.lower()
+    
+    # 1. Must be at least 40 characters (shorter is usually just "nice video" or emojis)
+    if len(text) < 40:
+        return False
+        
+    # 2. Check for negative keywords (Spam/Ads)
+    if any(nkw in text_lower for nkw in NEGATIVE_KEYWORDS):
+        return False
+        
+    # 3. Check for specific medical pain point keywords
     return any(kw in text_lower for kw in PAIN_POINT_KEYWORDS)
 
 def format_lead(comment, video_id):
@@ -124,7 +142,7 @@ def scrape_youtube():
     
     # Limit to top N videos to avoid getting blocked or taking too long
     # In a real run, you might want to process more.
-    videos_to_process = list(video_pool)[:20] 
+    videos_to_process = list(video_pool)[:25] 
     
     for video_id in videos_to_process:
         print(f"  📥 Processing video: {video_id}...")

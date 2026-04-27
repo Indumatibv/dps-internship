@@ -6,7 +6,7 @@ import requests
 # SUPABASE_URL = os.getenv("SUPABASE_URL", "your-project-url.supabase.co") #https://sdejjqadmrbmouupqakq.supabase.co
 SUPABASE_URL = os.getenv("SUPABASE_URL", "https://sdejjqadmrbmouupqakq.supabase.co")
 
-SUPABASE_KEY = os.getenv("SUPABASE_KEY", "your-anon-key")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNkZWpqcWFkbXJibW91dXBxYWtxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4MDA1MzEsImV4cCI6MjA5MjM3NjUzMX0.yZsvznwVMu8roTEgfSbFUBPEDBf3mOfkm5wZdMP-F38")
 
 # Resolve paths relative to this script's directory
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))

@@ -8,7 +8,11 @@ SUPABASE_URL = os.getenv("SUPABASE_URL", "https://sdejjqadmrbmouupqakq.supabase.
 
 SUPABASE_KEY = os.getenv("SUPABASE_KEY", "your-anon-key")
 
-def push_leads(file_path="scraped_leads_supabase_ready.json"):
+# Resolve paths relative to this script's directory
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DEFAULT_FILE = os.path.join(SCRIPT_DIR, "scraped_leads_supabase_ready.json")
+
+def push_leads(file_path=DEFAULT_FILE):
     """Push leads from a JSON file to Supabase."""
     if not os.path.exists(file_path):
         print(f"Error: {file_path} not found.")
@@ -48,8 +52,8 @@ def push_leads(file_path="scraped_leads_supabase_ready.json"):
         print(f"❌ Error during push: {e}")
 
 if __name__ == "__main__":
-    # This is a template. The user should set environment variables before running.
-    if SUPABASE_URL == "your-project-url.supabase.co" or SUPABASE_KEY == "your-anon-key":
-        print("⚠️ Please set SUPABASE_URL and SUPABASE_KEY environment variables first.")
+    if SUPABASE_KEY == "your-anon-key":
+        print("⚠️ Please set SUPABASE_KEY environment variable first.")
+        print("  export SUPABASE_KEY='your-anon-public-key'")
     else:
         push_leads()

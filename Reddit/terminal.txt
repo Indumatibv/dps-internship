@@ -1,3 +1,15 @@
+How to use them now:
+If you are in the main DPS_Internship folder, you can run:
+
+To Scrape:
+
+python Reddit/scrape_indian_med.py
+
+To Push to Supabase:
+export SUPABASE_KEY="your-anon-key"
+python Reddit/push_to_supabase.py
+----------
+
 (dps) admin@Indus-MacBook-Pro DPS_Internship % python Reddit/scrape_indian_med.py --search-only
 
 

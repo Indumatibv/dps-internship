@@ -358,10 +358,14 @@ def save_results(leads, output_file="scraped_leads.json"):
 
 
 if __name__ == "__main__":
+    # Resolve paths relative to this script's directory
+    SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+    DEFAULT_OUTPUT = os.path.join(SCRIPT_DIR, "scraped_leads.json")
+
     parser = argparse.ArgumentParser(description="Scrape Indian medical subreddits for pain points")
     parser.add_argument("--search-only", action="store_true", help="Only run search queries, skip browsing")
     parser.add_argument("--browse-only", action="store_true", help="Only browse feeds, skip search")
-    parser.add_argument("--output", default="scraped_leads.json", help="Output file path")
+    parser.add_argument("--output", default=DEFAULT_OUTPUT, help="Output file path")
     args = parser.parse_args()
 
     do_browse = not args.search_only

@@ -1,3 +1,20 @@
+
+For Reddit, we used the JSON Endpoint method.
+
+Here is how that compares to other methods:
+
+JSON Endpoint (Our Method): We append .json to the end of any Reddit URL (e.g., reddit.com/r/medicine.json). Reddit then returns a structured, machine-readable file.
+
+Pros: Faster than HTML scraping and doesn't require a developer account.
+Cons: Subject to strict rate limits (the "High Traffic" error).
+HTML Scraping: This involves downloading the actual webpage you see in your browser and using a tool like BeautifulSoup to "read" the text.
+
+Why we didn't use it: It's much slower, more fragile (if Reddit changes its website layout, the script breaks), and uses much more data.
+Official API (PRAW): This is the "proper" way using an official Reddit developer account and a "Client ID" and "Secret Key".
+
+Why we didn't use it: It requires you to register an application with Reddit first. Our current method got you the 200 leads quickly without needing to sign up for anything!
+Summary: Our script uses the JSON method because it’s the best balance between speed and ease of setup.
+
 # How the Reddit Scraper Works (In Easy Terms)
 
 This document explains exactly how our `scrape_indian_med.py` script gathers data from Reddit, broken down into 5 simple steps.

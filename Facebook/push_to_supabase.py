@@ -3,14 +3,13 @@ import os
 import requests
 
 # Supabase configuration (to be filled by user or from env vars)
-# SUPABASE_URL = os.getenv("SUPABASE_URL", "your-project-url.supabase.co") #https://sdejjqadmrbmouupqakq.supabase.co
 SUPABASE_URL = os.getenv("SUPABASE_URL", "https://sdejjqadmrbmouupqakq.supabase.co")
 
-SUPABASE_KEY = os.getenv("SUPABASE_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNkZWpqcWFkbXJibW91dXBxYWtxIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjgwMDUzMSwiZXhwIjoyMDkyMzc2NTMxfQ.46J3K4yquJPJgdwMfNQvhDMXE7IT22qqqWdCv9sCL2k")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNkZWpqcWFkbXJibW91dXBxYWtxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4MDA1MzEsImV4cCI6MjA5MjM3NjUzMX0.yZsvznwVMu8roTEgfSbFUBPEDBf3mOfkm5wZdMP-F38")
 
 # Resolve paths relative to this script's directory
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-DEFAULT_FILE = os.path.join(SCRIPT_DIR, "scraped_leads_supabase_ready.json")
+DEFAULT_FILE = os.path.join(SCRIPT_DIR, "scraped_facebook_leads_supabase_ready.json")
 
 def push_leads(file_path=DEFAULT_FILE):
     """Push leads from a JSON file to Supabase."""
@@ -25,9 +24,9 @@ def push_leads(file_path=DEFAULT_FILE):
         print("No leads to push.")
         return
 
-    # Rewrite the source field to just be "reddit" as requested
+    # Rewrite the source field to just be "facebook"
     for lead in leads:
-        lead["source"] = "reddit"
+        lead["source"] = "facebook"
 
     print(f"Pushing {len(leads)} leads to Supabase...")
 

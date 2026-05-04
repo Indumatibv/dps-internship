@@ -10,7 +10,7 @@ SUPABASE_KEY = os.getenv("SUPABASE_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e
 
 # Resolve paths relative to this script's directory
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-DEFAULT_FILE = os.path.join(SCRIPT_DIR, "scraped_leads_supabase_ready.json")
+DEFAULT_FILE = os.path.join(SCRIPT_DIR, "scraped_youtube_leads_supabase_ready.json")
 
 def push_leads(file_path=DEFAULT_FILE):
     """Push leads from a JSON file to Supabase."""
@@ -25,9 +25,9 @@ def push_leads(file_path=DEFAULT_FILE):
         print("No leads to push.")
         return
 
-    # Rewrite the source field to just be "reddit" as requested
+    # Rewrite the source field to just be "youtube_comment" as requested
     for lead in leads:
-        lead["source"] = "reddit"
+        lead["source"] = "youtube_comment"
 
     print(f"Pushing {len(leads)} leads to Supabase...")
 

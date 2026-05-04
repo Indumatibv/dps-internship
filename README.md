@@ -19,5 +19,10 @@ Extracts formal discussions on systemic issues (e.g., clerical burden, burnout s
 - **Location**: `LinkedIn/`
 - **Documentation**: [`LinkedIn/README.md`](LinkedIn/README.md)
 
+### Facebook Scraper
+Scrapes public Facebook pages and groups for medical pain points using mbasic HTML parsing.
+- **Location**: `Facebook/`
+- **Documentation**: [`Facebook/README.md`](Facebook/README.md)
+
 ## Shared Utilities
-- **Supabase Integration**: Both modules generate JSON data formatted for the same Supabase `leads` table. Use the `push_to_supabase.py` script (found in the `Reddit/` folder) to upload data.
+- **Supabase Integration**: All modules generate JSON data formatted for the same Supabase `leads` table. Each module has its own `push_to_supabase.py` script to upload data.
